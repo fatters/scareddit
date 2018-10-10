@@ -1,10 +1,11 @@
-import {TestBed, async, ComponentFixture} from "@angular/core/testing";
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import {HeaderComponent} from './header/header.component';
-import {By} from "@angular/platform-browser";
-import {RedditComment} from "./model/comment";
-import {DebugElement} from "@angular/core";
+import { HeaderComponent } from './header/header.component';
+import { By } from '@angular/platform-browser';
+import { RedditComment } from './model/comment';
+import { DebugElement } from '@angular/core';
+import {RedditThread} from "./model/thread";
 
 describe('AppComponent', () => {
 
@@ -26,6 +27,14 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 });
+
+export const dummyThread = (): RedditThread => {
+  return new RedditThread(
+    'id',
+    'Title',
+    'Url'
+  );
+};
 
 export const dummyComment = (): RedditComment => {
   return new RedditComment(

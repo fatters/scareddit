@@ -1,7 +1,6 @@
 import { ThreadsComponent } from './threads.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RedditThread } from '../model/thread';
-import { getDebugElements, getNativeElement } from '../app.component.spec';
+import { dummyThread, getDebugElements, getNativeElement } from '../app.component.spec';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ThreadsComponent', () => {
@@ -41,12 +40,4 @@ describe('ThreadsComponent', () => {
       expect(getNativeElement(fixture, '.thread__body').innerText).toEqual('Title');
     });
   });
-
-  const dummyThread = (): RedditThread => {
-    return new RedditThread(
-      'id',
-      'Title',
-      'Url'
-    );
-  };
 });
