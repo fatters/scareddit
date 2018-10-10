@@ -1,0 +1,9 @@
+<div class="container">
+  <ng-template ngFor let-thread let-i="index" [ngForOf]="threads">
+    <a [routerLink]="'/comments/' + thread.id">
+      <div class="thread">
+        <div class="thread__body" [innerHTML]="thread.title"></div>
+      </div>
+    </a>
+  </ng-template>
+</div>

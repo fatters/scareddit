@@ -1,0 +1,8 @@
+<div class="comment">
+  <div class="comment__body" [innerHTML]="comment.body"></div>
+  <footer class="comment__footer">
+    <span class="comment__footer__score">Score: {{comment.score}}</span>
+    <a class="comment__footer__view-thread comment__button" [href]="'http://reddit.com' + comment.link" target="_blank" rel="nofollow">Visit Comment</a>
+    <a class="comment__footer__read-it comment__button" (click)="removeCommentFromList()">Read it</a>
+  </footer>
+</div>

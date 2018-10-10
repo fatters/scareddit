@@ -1,0 +1,17 @@
+<div class="container">
+  <app-loading [isLoading]="loading"></app-loading>
+
+  <div *ngIf="!loading && !isCommentsEmpty()">
+    <app-summary [comments]="comments" (unread)="setAllCommentsInThreadUnread()"></app-summary>
+    <ng-template ngFor let-comment let-i="index" [ngForOf]="comments">
+      <app-comment [comment]="comment" (remove)="removeCommentFromList(i, $event)"></app-comment>
+    </ng-template>
+  </div>
+
+  <div *ngIf="!loading && isCommentsEmpty()">
+    <a [routerLink]="'/'" class="go-back">&laquo; Go back</a>
+    <p>All comments for this thread are set as read!</p>
+    <p><a (click)="setAllCommentsInThreadUnread()">Make all comments unread</a></p>
+  </div>
+
+</div>

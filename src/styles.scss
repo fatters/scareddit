@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #333;
+  color: #f5f5f5;
+  font-family: 'Lato', Arial, sans-serif;
+  overflow-y: scroll;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+a {
+  color: orange;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+ul {
+  padding-left: 16px;
+}
+
+.comment {
+  border-bottom: 1px solid orange;
+  padding-bottom: 16px;
+
+  &__footer {
+    line-height: 1.4;
+  }
+
+  &__footer > *:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+*::selection {
+  background: rgba(255, 165, 0, 0.99);
+  color: #333;
+}
+
+p {
+  line-height: 1.4;
+}
+
+.thread {
+  margin-top: 16px;
+}
+
+.header {
+  background: orange;
+  color: #333;
+  font-family: 'Chelsea Market', Arial, sans-serif;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.header__logo {
+  font-size: 16px;
+  width: 85px;
+  line-height: 68px;
+  float: left;
+
+  a {
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.header__navigation {
+  font-size: 14px;
+  float: right;
+
+  &__link {
+    font-size: 12px;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+    line-height: 68px;
+    display: block;
+    float: left;
+    padding: 0 16px;
+    transition: all 0.2s linear;
+  }
+
+  &__link:hover {
+    background: #333;
+    color: orange;
+  }
+
+  &__text {
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 0 0 16px;
+    float: left;
+    line-height: 68px;
+  }
+}
+
+svg path,
+svg rect{
+  fill: orange;
+}
+
+.loading {
+  text-align: center;
+}
+
+.go-back {
+  display: inline-block;
+  margin-top: 16px;
+}
+
+.thread-summary {
+  border-bottom: 1px solid orange;
+  padding-bottom: 16px;
+
+  &__footer > *:not(:last-child) {
+    margin-right: 16px;
+  }
+}
