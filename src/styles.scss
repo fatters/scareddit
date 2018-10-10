@@ -28,7 +28,6 @@ ul {
 }
 
 .comment {
-  border-bottom: 1px solid orange;
   padding-bottom: 16px;
 
   &__footer {
@@ -51,6 +50,10 @@ p {
 
 .thread {
   margin-top: 16px;
+
+  &:last-of-type {
+    margin-bottom: 16px;
+  }
 }
 
 .header {
@@ -114,6 +117,11 @@ svg rect{
 
 .loading {
   text-align: center;
+  margin: 16px 0;
+
+  &__text {
+    margin: 0 0 16px 0;
+  }
 }
 
 .go-back {
@@ -127,5 +135,14 @@ svg rect{
 
   &__footer > *:not(:last-child) {
     margin-right: 16px;
+  }
+}
+
+.footer {
+
+  &__inner {
+    border-top: 1px solid orange;
+    padding: 16px 0;
+    text-align: center;
   }
 }

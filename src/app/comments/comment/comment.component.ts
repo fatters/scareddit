@@ -3,7 +3,8 @@ import {RedditComment} from '../../model/comment';
 
 @Component({
   selector: 'app-comment',
-  templateUrl: './comment.component.html'
+  templateUrl: './comment.component.html',
+  styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent {
   @Input() comment: RedditComment;
