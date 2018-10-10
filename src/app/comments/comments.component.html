@@ -2,7 +2,7 @@
   <app-loading [isLoading]="loading"></app-loading>
 
   <div *ngIf="!loading && !isCommentsEmpty()">
-    <app-summary [comments]="comments" (unread)="setAllCommentsInThreadUnread()"></app-summary>
+    <app-summary [comments]="comments" [threadId]="threadId" (unread)="setAllCommentsInThreadUnread()"></app-summary>
     <ng-template ngFor let-comment let-i="index" [ngForOf]="comments">
       <app-comment [comment]="comment" (remove)="removeCommentFromList(i, $event)"></app-comment>
     </ng-template>

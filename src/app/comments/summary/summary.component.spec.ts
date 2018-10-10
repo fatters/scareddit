@@ -20,6 +20,7 @@ describe('SummaryComponent', () => {
       dummyComment(),
       dummyComment()
     ];
+    testSubject.threadId = 'id';
   });
 
   describe('render', () => {
@@ -52,6 +53,31 @@ describe('SummaryComponent', () => {
 
       // Then
       expect(result).toEqual('2 Unread Comments');
+    });
+  });
+
+  describe('#threadLink()', () => {
+
+    it('returns a reddit link with the thread id', () => {
+      // When
+      const result = testSubject.threadLink;
+
+      // Then
+      expect(result).toEqual('https://redd.it/id');
+    });
+  });
+
+  describe('#setAllCommentsInThreadUnread()', () => {
+
+    it('unread emits with void', () => {
+      // Given
+      spyOn(testSubject.unread, 'emit');
+
+      // When
+      testSubject.setAllCommentsInThreadUnread();
+
+      // Then
+      expect(testSubject.unread.emit).toHaveBeenCalled();
     });
   });
 });

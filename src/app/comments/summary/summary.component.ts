@@ -7,6 +7,7 @@ import { RedditComment } from '../../model/comment';
 })
 export class SummaryComponent {
   @Input() comments: RedditComment[];
+  @Input() threadId: string;
   @Output() unread: EventEmitter<void> = new EventEmitter<void>();
 
   get title(): string {
@@ -15,6 +16,10 @@ export class SummaryComponent {
 
   get commentsCount(): string {
     return `${this.comments.length} Unread Comments`;
+  }
+
+  get threadLink(): string {
+    return `https://redd.it/${this.threadId}`;
   }
 
   setAllCommentsInThreadUnread(): void {
