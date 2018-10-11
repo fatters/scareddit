@@ -5,7 +5,8 @@ import { HeaderComponent } from './header/header.component';
 import { By } from '@angular/platform-browser';
 import { RedditComment } from './model/comment';
 import { DebugElement } from '@angular/core';
-import {RedditThread} from "./model/thread";
+import { RedditThread } from './model/thread';
+import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 
 describe('AppComponent', () => {
 
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        HeaderComponent
+        HeaderComponent,
+        ScrollToTopComponent
       ],
       imports: [
         RouterTestingModule
