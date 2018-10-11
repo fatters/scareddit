@@ -40,4 +40,26 @@ describe('ThreadsComponent', () => {
       expect(getNativeElement(fixture, '.thread__body').innerText).toEqual('Title');
     });
   });
+
+  describe('#getCommentsRead()', () => {
+
+    it('returns 0 if thread does not have entry in local storage', () => {
+      // When
+      const result = testSubject.getCommentsRead('any id');
+
+      // Then
+      expect(result).toEqual('0 Comments Read');
+    });
+
+    it('returns the number of items saved to local storage if more than 0', () => {
+      // Given
+      spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(['id one', 'id two']));
+
+      // When
+      const result = testSubject.getCommentsRead('any id');
+
+      // Then
+      expect(result).toEqual('2 Comments Read');
+    });
+  });
 });

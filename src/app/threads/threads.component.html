@@ -4,6 +4,7 @@
       <a [routerLink]="'/comments/' + thread.id">
         <div class="thread__body" [innerHTML]="thread.title"></div>
       </a>
+      <span>{{getCommentsRead(thread.id)}}</span>
     </div>
   </ng-template>
 </div>

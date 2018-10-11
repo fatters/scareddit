@@ -10,4 +10,9 @@ declare var require: any;
 })
 export class ThreadsComponent {
   threads: RedditThread[] = require('../data/threads.json');
+
+  getCommentsRead(threadId: string): string {
+    const commentsRead = JSON.parse(localStorage.getItem(threadId)) || [];
+    return `${commentsRead.length} Comments Read`;
+  }
 }
