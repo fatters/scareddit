@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-scroll-to-top',
