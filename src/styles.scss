@@ -5,6 +5,10 @@ body {
   color: #f5f5f5;
   font-family: 'Lato', Arial, sans-serif;
   overflow-y: scroll;
+
+  &.has-scroll-component {
+    padding-bottom: 68px;
+  }
 }
 
 * {
