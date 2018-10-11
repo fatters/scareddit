@@ -85,28 +85,16 @@ p {
   float: right;
 
   &__link {
-    font-size: 12px;
     color: #333;
+    font-size: 12px;
     text-decoration: none;
-    text-align: center;
     line-height: 68px;
     display: block;
     float: left;
-    padding: 0 16px;
-    transition: all 0.2s linear;
-  }
 
-  &__link:hover {
-    background: #333;
-    color: orange;
-  }
-
-  &__text {
-    display: inline-block;
-    font-size: 12px;
-    margin: 0 0 0 16px;
-    float: left;
-    line-height: 68px;
+    &:not(:first-of-type) {
+      margin-left: 32px;
+    }
   }
 }
 
