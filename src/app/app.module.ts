@@ -12,6 +12,8 @@ import { SummaryComponent } from './comments/summary/summary.component';
 import { AboutComponent } from './about/about.component';
 import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: '', component: ThreadsComponent },
@@ -34,7 +36,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AppService
