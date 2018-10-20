@@ -1,6 +1,6 @@
 {
-  "name": "scareddit",
-  "short_name": "scareddit",
+  "name": "Scareddit",
+  "short_name": "Scareddit",
   "theme_color": "#FFA500",
   "background_color": "#333",
   "display": "standalone",
