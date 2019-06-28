@@ -1,4 +1,5 @@
 import { Component, HostListener, Renderer2 } from '@angular/core';
+import { AppService } from './app.service';
 
 const SCROLL_TRIGGER_POINT = 1000;
 const SCROLL_CLASS = 'has-scroll-component';
@@ -10,7 +11,11 @@ const SCROLL_CLASS = 'has-scroll-component';
 export class AppComponent {
   showScrollToTopComponent: boolean;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2,
+              private appService: AppService) {
+    this.configureSnooWrap().then((data) => {
+      this.appService.setSnoowrap(data);
+    }); 
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -22,5 +27,13 @@ export class AppComponent {
       this.showScrollToTopComponent = false;
       this.renderer.removeClass(document.body, SCROLL_CLASS);
     }
+  }
+
+  private configureSnooWrap(): any {
+    return fetch(`/.netlify/functions/return-env`).then((data) => {
+      return data.json();
+    }, (err) => {
+      return {};
+    });
   }
 }
