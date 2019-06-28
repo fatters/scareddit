@@ -22,11 +22,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json",
-              {
-                "glob": "_redirects",
-                "input": "src",
-                "output": "/"
-              }
+              "src_redirects"
             ],
             "styles": [
               "src/styles.scss"
