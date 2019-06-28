@@ -1,5 +1,7 @@
 # scareddit
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ee638476-ad14-485d-af0f-373ed16ef52f/deploy-status)](https://app.netlify.com/sites/scareddit/deploys)
+
 Born out of a love of reading scary/paranormal AskReddit posts but never keeping track of which one's I'd read. You can set individual comments as read which is then saved in your browser's localStorage.
 
 This means that as long as you used the same browser &amp; device, the comments you set as read will be remembered. To work across multiple devices, we would need accounts which seemed overkill for how simple I wanted this app to be.
