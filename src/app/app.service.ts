@@ -3,7 +3,8 @@ declare var require: any;
 export class AppService {
   private snoowrap: any;
 
-  constructor() {    
+  constructor() {
+    console.log('OI!', this.configureSnooWrap());
     const sw = require('snoowrap');
     this.snoowrap = new sw(this.configureSnooWrap());
   }
@@ -16,6 +17,8 @@ export class AppService {
     return fetch(`/.netlify/functions/return-env`).then((data) => {
       console.log('CONFIGURING SNOOWRAP WITH!', data);
       return data.json();
+    }, () => {
+      return {};
     });
   }
 }
