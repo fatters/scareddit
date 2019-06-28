@@ -1,5 +1,7 @@
 exports.handler = function(event, context, callback) {
   const { CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, USER_AGENT } = process.env;
+  console.log('CLIENT ID', CLIENT_ID);
+  console.log(process.env);
 
   callback(null, {
     statusCode: 200,
