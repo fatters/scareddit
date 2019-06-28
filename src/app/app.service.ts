@@ -14,6 +14,7 @@ export class AppService {
 
   configureSnooWrap(): any {
     return fetch(`/.netlify/functions/return-env`).then((data) => {
+      console.log('CONFIGURING SNOOWRAP WITH!', data);
       return data.json();
     });
   }
