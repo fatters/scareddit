@@ -8,10 +8,10 @@ export class AppService {
     const sw = require('snoowrap');
 
     this.snoowrap = new sw({
-      userAgent: config.userAgent,
-      clientId: config.clientId,
-      clientSecret: config.clientSecret,
-      refreshToken: config.refreshToken
+      userAgent: process.env.USER_AGENT,
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      refreshToken: process.env.REFRESH_TOKEN
     });
   }
 
