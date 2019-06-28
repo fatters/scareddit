@@ -4,7 +4,6 @@ export class AppService {
   private snoowrap: any;
 
   constructor() {
-    const config = require('../../config.json');
     const sw = require('snoowrap');
 
     this.snoowrap = new sw({
