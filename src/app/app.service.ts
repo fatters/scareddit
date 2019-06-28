@@ -1,3 +1,5 @@
+import { THROW_IF_NOT_FOUND } from "@angular/core/src/di/injector";
+
 declare var require: any;
 
 export class AppService {
@@ -5,6 +7,9 @@ export class AppService {
 
   constructor() {
     console.log('OI!', this.configureSnooWrap());
+    this.configureSnooWrap().then((data) => {
+      console.log('here?', data);
+    })
     const sw = require('snoowrap');
     this.snoowrap = new sw(this.configureSnooWrap());
   }
