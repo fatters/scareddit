@@ -6,12 +6,11 @@ export class AppService {
   private snoowrap: any;
 
   constructor() {
-    console.log('OI!', this.configureSnooWrap());
+    const sw = require('snoowrap');
     this.configureSnooWrap().then((data) => {
       console.log('here?', data);
-    })
-    const sw = require('snoowrap');
-    this.snoowrap = new sw(this.configureSnooWrap());
+      this.snoowrap = new sw(data.json());
+    }); 
   }
 
   getRepliesFromThread(threadId: string): Promise<any> {
