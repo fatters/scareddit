@@ -1,4 +1,4 @@
-# Scareddit
+# scareddit
 
 Born out of a love of reading scary/paranormal AskReddit posts but never keeping track of which one's I'd read. You can set individual comments as read which is then saved in your browser's localStorage.
 
