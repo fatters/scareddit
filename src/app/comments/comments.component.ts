@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { RedditComment } from '../model/comment';
 import { ActivatedRoute } from '@angular/router';
+import { SeoService } from '../common/seo/seo.service';
 
 @Component({
   selector: 'app-comments',
@@ -13,7 +14,8 @@ export class CommentsComponent implements OnInit {
   threadId: string;
 
   constructor(private appService: AppService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private seoService: SeoService) {
   }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class CommentsComponent implements OnInit {
     this.appService.getRepliesFromThread(this.threadId).then((comments) => {
       this.filterComments(comments);
       this.loading = false;
+      this.seoService.setTitleAndDescription(
+        `${this.comments[0].parent} | Scareddit`,
+        'A collection of spooky/paranormal threads from Reddit'
+      );
     });
   }
 
