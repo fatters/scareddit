@@ -18,7 +18,7 @@ export class CommentsComponent implements OnInit {
               private seoService: SeoService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loading = true;
     this.threadId = this.route.snapshot.params.id;
 
@@ -32,7 +32,7 @@ export class CommentsComponent implements OnInit {
     });
   }
 
-  removeCommentFromList(index: number, commentId: string) {
+  removeCommentFromList(index: number, commentId: string): void {
     this.comments.splice(index, 1);
     this.setCommentAsRead(commentId);
   }
@@ -52,7 +52,7 @@ export class CommentsComponent implements OnInit {
     localStorage.setItem(this.threadId, JSON.stringify(commentsRead));
   }
 
-  private filterComments(data: any) {
+  private filterComments(data: any): void {
     data.comments.forEach((comment) => {
       if (comment.body !== '[removed]' && comment.body !== '[deleted]') {
         const commentsRead = JSON.parse(localStorage.getItem(this.threadId)) || [];

@@ -7,6 +7,7 @@ import { RedditComment } from './_model/comment';
 import { DebugElement } from '@angular/core';
 import { RedditThread } from './_model/thread';
 import { ScrollToTopComponent } from './_common/scroll-to-top/scroll-to-top.component';
+import { AppService } from './app.service';
 
 describe('AppComponent', () => {
 
@@ -17,15 +18,23 @@ describe('AppComponent', () => {
         HeaderComponent,
         ScrollToTopComponent
       ],
+      providers: [
+        {provide: AppService, useValue: jasmine.createSpyObj('appService', ['setSnoowrap'])}
+      ],
       imports: [
         RouterTestingModule
       ]
-    }).compileComponents();
+    });
   }));
 
   it('should create the app', async(() => {
+    // Given
     const fixture = TestBed.createComponent(AppComponent);
+
+    // When
     const app = fixture.debugElement.componentInstance;
+
+    // Then
     expect(app).toBeTruthy();
   }));
 });

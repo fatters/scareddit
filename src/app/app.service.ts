@@ -8,8 +8,8 @@ declare let snoowrap: any;
 export class AppService {
   private snoowrap: any;
 
-  setSnoowrap(snoo: any): void {
-    this.snoowrap = new snoowrap(snoo);
+  setSnoowrap(snoowrapConfig: any): void {
+    this.snoowrap = new snoowrap(snoowrapConfig);
   }
 
   getRepliesFromThread(threadId: string): Promise<any> {
