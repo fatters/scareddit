@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { RedditThread } from '../model/thread';
-import { SeoService } from '../common/seo/seo.service';
+import { RedditThread } from '../_model/thread';
+import { SeoService } from '../_common/seo/seo.service';
 
 declare var require: any;
 
@@ -10,7 +10,7 @@ declare var require: any;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThreadsComponent implements OnInit {
-  threads: RedditThread[] = require('../data/threads.json');
+  threads: RedditThread[] = require('../../data/threads.json');
 
   constructor(private seoService: SeoService) {
   }

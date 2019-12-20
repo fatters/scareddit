@@ -1,12 +1,12 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './_common/header/header.component';
 import { By } from '@angular/platform-browser';
-import { RedditComment } from './model/comment';
+import { RedditComment } from './_model/comment';
 import { DebugElement } from '@angular/core';
-import { RedditThread } from './model/thread';
-import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
+import { RedditThread } from './_model/thread';
+import { ScrollToTopComponent } from './_common/scroll-to-top/scroll-to-top.component';
 
 describe('AppComponent', () => {
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { SeoService } from '../common/seo/seo.service';
+import { SeoService } from '../_common/seo/seo.service';
 
 @Component({
   selector: 'app-about',
