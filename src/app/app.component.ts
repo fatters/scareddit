@@ -1,5 +1,6 @@
 import { Component, HostListener, Renderer2 } from '@angular/core';
 import { AppService } from './app.service';
+import { environment } from '../environments/environment';
 
 const SCROLL_TRIGGER_POINT = 1000;
 const SCROLL_CLASS = 'has-scroll-component';
@@ -13,9 +14,13 @@ export class AppComponent {
 
   constructor(private renderer: Renderer2,
               private appService: AppService) {
-    this.configureSnooWrap().then((data) => {
-      this.appService.setSnoowrap(data);
-    }); 
+    if (environment.production) {
+      this.configureSnooWrap().then((data) => {
+        this.appService.setSnoowrap(data);
+      });
+    } else {
+      this.appService.setSnoowrap(environment.config);
+    }
   }
 
   @HostListener('window:scroll', ['$event'])

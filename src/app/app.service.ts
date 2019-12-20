@@ -1,16 +1,20 @@
-declare var require: any;
+import { Injectable } from '@angular/core';
 
+declare let snoowrap: any;
+
+@Injectable({
+  providedIn: 'root'
+})
 export class AppService {
   private snoowrap: any;
 
   setSnoowrap(snoo: any): void {
-    const sw = require('snoowrap');
-    this.snoowrap = new sw(snoo);
+    this.snoowrap = new snoowrap(snoo);
   }
 
   getRepliesFromThread(threadId: string): Promise<any> {
     if (this.snoowrap) {
-      return this.snoowrap.getSubmission(threadId).expandReplies({limit: Infinity, depth: 0});
+      return this.snoowrap.getSubmission(threadId).expandReplies({limit: 1000, depth: 0});
     }
   }
 }

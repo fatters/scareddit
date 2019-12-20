@@ -27,7 +27,6 @@
     "netlify-lambda": "^1.4.13",
     "ngx-infinite-scroll": "^7.2.0",
     "rxjs": "^6.5.2",
-    "snoowrap": "^1.17.0",
     "stream": "0.0.2",
     "zone.js": "~0.9.1"
   },
