@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { AppService } from './app.service';
 import { RouterModule, Routes } from '@angular/router';
 import { ThreadsComponent } from './threads/threads.component';
 import { CommentsComponent } from './comments/comments.component';
