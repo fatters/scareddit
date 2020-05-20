@@ -53,7 +53,7 @@ export class CommentsComponent implements OnInit {
   }
 
   private filterComments(data: any): void {
-    data?.comments.forEach((comment) => {
+    data.comments.forEach((comment) => {
       if (comment.body !== '[removed]' && comment.body !== '[deleted]') {
         const commentsRead = JSON.parse(localStorage.getItem(this.threadId)) || [];
         if (commentsRead.indexOf(comment.id) === -1) {
