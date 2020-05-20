@@ -16,6 +16,7 @@
     "name": "assets",
     "installMode": "lazy",
     "updateMode": "prefetch",
+    "maximumFileSizeToCacheInBytes": 10485760,
     "resources": {
       "files": [
         "/assets/**"
