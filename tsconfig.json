@@ -16,11 +16,6 @@
     "lib": [
       "es2017",
       "dom"
-    ],
-    "paths": {
-      "snoowrap": [
-        "./node_modules/snoowrap/dist/snoowrap.js"
-      ]
-    }
+    ]
   }
 }
