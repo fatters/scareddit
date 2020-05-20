@@ -30,7 +30,11 @@ export class AppService {
 
   getRepliesFromThread(threadId: string): Promise<any> {
     if (this.snoowrap) {
-      return this.snoowrap.getSubmission(threadId).expandReplies({limit: Infinity, depth: 0});
+      return this.whenSnoowrapReady().then(() => {
+        return this.snoowrap.getSubmission(threadId).expandReplies({limit: Infinity, depth: 0});
+      }).catch((error) => {
+        return new Error(`Unable to retrieve comments from snoowrap. ${error.message}`);
+      });
     }
   }
 
