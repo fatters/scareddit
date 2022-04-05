@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './_common/header/header.component';
@@ -11,7 +11,7 @@ import { AppService } from './app.service';
 
 describe('AppComponent', () => {
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     });
   }));
 
-  it('should create the app', async(() => {
+  it('should create the app', waitForAsync(() => {
     // Given
     const fixture = TestBed.createComponent(AppComponent);
 
