@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  config: require('../../config.json')
+  config: {}// require('../../config.json')
 };
 
 /*

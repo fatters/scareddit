@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommentsComponent } from './comments.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -11,6 +12,7 @@ describe('CommentsComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CommentsComponent],
+      imports: [HttpClientModule], // TODO: HttpClientTestingModule? Not current available - probably due to massively transforming package.json
       providers: [
         {provide: ActivatedRoute, useValue: {snapshot: {params: {id: 'id'}}}},
       ],

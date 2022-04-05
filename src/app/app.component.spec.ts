@@ -19,7 +19,7 @@ describe('AppComponent', () => {
         ScrollToTopComponent
       ],
       providers: [
-        {provide: AppService, useValue: jasmine.createSpyObj('appService', ['setSnoowrap'])}
+        {provide: AppService, useValue: jasmine.createSpyObj('appService', ['configureSnoowrap'])}
       ],
       imports: [
         RouterTestingModule
