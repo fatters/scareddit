@@ -1,12 +1,12 @@
 <div class="container">
-  <app-loading [isLoading]="loading"></app-loading>
+  <scareddit-loading [isLoading]="loading" [text]="'Comments'"></scareddit-loading>
 
   <div *ngIf="thread$ | async as thread">
 
     <ng-container *ngIf="thread.comments.length > 0">
-      <app-thread-summary [thread]="thread" (unread)="setAllCommentsInThreadUnread()"></app-thread-summary>
+      <scareddit-thread-summary [thread]="thread" (unread)="setAllCommentsInThreadUnread()"></scareddit-thread-summary>
       <ng-container *ngFor="let comment of thread.comments">
-        <app-thread-comment [comment]="comment" (remove)="removeCommentFromList($event)"></app-thread-comment>
+        <scareddit-thread-comment [comment]="comment" (remove)="removeCommentFromList($event)"></scareddit-thread-comment>
       </ng-container>
     </ng-container>
 

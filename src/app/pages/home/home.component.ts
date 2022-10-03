@@ -1,24 +1,26 @@
-import { map, Observable } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { HomeService } from 'src/app/services/home.service';
+import { map, Observable, tap } from 'rxjs';
 import { HomePageItem } from 'src/app/models/home-page-item';
+import { HomeService } from 'src/app/services/home.service';
 import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
-  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
   homePageItems$: Observable<HomePageItem[]>;
+  loading = false;
 
   constructor(private seoService: SeoService, private homeService: HomeService) {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.homePageItems$ = this.homeService.getHomePageItems().pipe(
-      map((homePageItems) => homePageItems.map((item) => ({ ...item, commentsRead: this.getCommentsRead(item.id) })))
+      map((homePageItems) => homePageItems.map((item) => ({ ...item, commentsRead: this.getCommentsRead(item.id) }))),
+      tap(() => this.loading = false)
     );
 
     this.seoService.setTitleAndDescription(

@@ -11,7 +11,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "scareddit",
       "schematics": {},
       "architect": {
         "build": {

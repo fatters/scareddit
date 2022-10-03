@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { RedditComment } from 'src/app/models/reddit-comment';
 
 @Component({
-  selector: 'app-thread-comment',
+  selector: 'scareddit-thread-comment',
   templateUrl: './thread-comment.component.html',
   styleUrls: ['./thread-comment.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -1,3 +1,4 @@
+import { LoadingModule } from 'src/app/components/loading/loading.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,7 +14,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    LoadingModule
   ]
 })
 export class HomeModule {}

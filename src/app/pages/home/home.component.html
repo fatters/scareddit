@@ -1,4 +1,6 @@
 <div class="container">
+  <scareddit-loading [isLoading]="loading" [text]="'Threads'"></scareddit-loading>
+
   <ng-container *ngFor="let item of (homePageItems$ | async); let i = index">
     <div class="home-page-item">
       <a [routerLink]="'/thread/' + item.id">

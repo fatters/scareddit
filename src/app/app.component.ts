@@ -4,7 +4,7 @@ const SCROLL_TRIGGER_POINT = 1000;
 const SCROLL_CLASS = 'has-scroll-component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'scareddit-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

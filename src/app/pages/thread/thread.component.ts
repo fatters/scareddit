@@ -6,7 +6,6 @@ import { RedditThread } from './../../models/reddit-thread';
 import { ThreadService } from './../../services/thread.service';
 
 @Component({
-  selector: 'app-thread',
   templateUrl: './thread.component.html',
   styleUrls: ['./thread.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

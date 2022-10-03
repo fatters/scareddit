@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
-  selector: 'app-about',
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
