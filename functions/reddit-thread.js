@@ -37,14 +37,23 @@ exports.handler = async (event, context) => {
     }
 
     if (snoowrap && threadId) {
-      const thread = await snoowrap.getSubmission(threadId).expandReplies(threadConfig);
-      const title = thread.title ?? 'Title not found'
-      const comments = thread.comments ?? [];
+      try {
+        const thread = await snoowrap.getSubmission(threadId).expandReplies(threadConfig);
+        const id = thread.id ?? '';
+        const title = thread.title ?? 'Title not found'
+        const comments = thread.comments ?? [];
 
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ title, comments })
+        return {
+          statusCode: 200,
+          body: JSON.stringify({ id, title, comments })
+        }
+      } catch {
+        return {
+          statusCode: 404,
+          body: JSON.stringify({error: 'Reddit thread not found'})
+        }
       }
+
     } else {
       return {
         statusCode: 400,

@@ -1,0 +1,41 @@
+.header {
+  background: orange;
+  color: #333;
+  font-family: 'Chelsea Market', Arial, sans-serif;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.header__logo {
+  font-size: 16px;
+  width: 85px;
+  line-height: 68px;
+  float: left;
+
+  a {
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.header__navigation {
+  font-size: 14px;
+  float: right;
+
+  &__link {
+    color: #333;
+    font-size: 12px;
+    text-decoration: none;
+    line-height: 68px;
+    display: block;
+    float: left;
+
+    &:not(:first-of-type) {
+      margin-left: 32px;
+    }
+  }
+}

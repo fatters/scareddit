@@ -1,3 +1,11 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -9,10 +17,6 @@ body {
   &.has-scroll-component {
     padding-bottom: 68px;
   }
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .container {
@@ -31,19 +35,6 @@ ul {
   padding-left: 16px;
 }
 
-.comment {
-  padding-bottom: 16px;
-  word-break: break-word;
-
-  &__footer {
-    line-height: 1.4;
-  }
-
-  &__footer > *:not(:last-child) {
-    margin-right: 16px;
-  }
-}
-
 *::selection {
   background: rgba(255, 165, 0, 0.99);
   color: #333;
@@ -53,82 +44,9 @@ p {
   line-height: 1.4;
 }
 
-.thread {
-  margin-top: 16px;
-
-  &:last-of-type {
-    margin-bottom: 16px;
-  }
-}
-
-.header {
-  background: orange;
-  color: #333;
-  font-family: 'Chelsea Market', Arial, sans-serif;
-  line-height: 1;
-  overflow: hidden;
-}
-
-.header__logo {
-  font-size: 16px;
-  width: 85px;
-  line-height: 68px;
-  float: left;
-
-  a {
-    color: #333;
-    text-decoration: none;
-
-    &:hover {
-      color: #333;
-    }
-  }
-}
-
-.header__navigation {
-  font-size: 14px;
-  float: right;
-
-  &__link {
-    color: #333;
-    font-size: 12px;
-    text-decoration: none;
-    line-height: 68px;
-    display: block;
-    float: left;
-
-    &:not(:first-of-type) {
-      margin-left: 32px;
-    }
-  }
-}
-
-svg path,
-svg rect{
-  fill: orange;
-}
-
-.loading {
-  text-align: center;
-  margin: 16px 0;
-
-  &__text {
-    margin: 0 0 16px 0;
-  }
-}
-
 .go-back {
   display: inline-block;
   margin-top: 16px;
-}
-
-.thread-summary {
-  border-bottom: 1px solid orange;
-  padding-bottom: 16px;
-
-  &__footer > *:not(:last-child) {
-    margin-right: 16px;
-  }
 }
 
 .footer {
@@ -140,20 +58,6 @@ svg rect{
   }
 }
 
-.scroll-to-top {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 16px 0;
-  background: #333;
-  border-top: 1px solid orange;
-
-  .btn {
-    width: 100%;
-  }
-}
-
 .btn {
   background: orange;
   color: #333;
@@ -162,4 +66,9 @@ svg rect{
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
+}
+
+svg path,
+svg rect{
+  fill: orange;
 }

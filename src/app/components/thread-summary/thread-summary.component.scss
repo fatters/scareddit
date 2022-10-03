@@ -1,0 +1,8 @@
+.thread-summary {
+  border-bottom: 1px solid orange;
+  padding-bottom: 16px;
+
+  &__footer > *:not(:last-child) {
+    margin-right: 16px;
+  }
+}

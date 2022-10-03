@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "defaultCollection": "@angular-eslint/schematics"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -25,7 +26,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json",
-              "src/_redirects"
+              "src/_redirects",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"
@@ -97,7 +99,20 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json",
-              { "glob": "robots.txt", "input": "src/", "output": "/" }
+              {
+                "glob": "robots.txt",
+                "input": "src/",
+                "output": "/"
+              }
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         }

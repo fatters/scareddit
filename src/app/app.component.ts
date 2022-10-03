@@ -1,20 +1,17 @@
-import { Component, HostListener, Renderer2 } from '@angular/core';
-import { AppService } from './app.service';
+import { ChangeDetectionStrategy, Component, HostListener, Renderer2 } from '@angular/core';
 
 const SCROLL_TRIGGER_POINT = 1000;
 const SCROLL_CLASS = 'has-scroll-component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   showScrollToTopComponent: boolean;
 
-  constructor(private renderer: Renderer2,
-              private appService: AppService) {
-    this.appService.configureSnoowrap();
-  }
+  constructor(private renderer: Renderer2) {}
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {

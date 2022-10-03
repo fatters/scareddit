@@ -1,9 +1,0 @@
-<div class="thread-summary">
-  <a [routerLink]="'/'" class="go-back">&laquo; Go back</a>
-  <h1 class="thread-summary__title" [innerHTML]="title"></h1>
-  <footer class="thread-summary__footer">
-    <span class="thread-summary__footer__count">{{commentsCount}}</span>
-    <a class="thread-summary__footer__view-thread" [href]="threadLink" target="_blank" rel="nofollow noreferrer">Visit Thread</a>
-    <a class="thread-summary__footer__unread" (click)="setAllCommentsInThreadUnread()">Unread All</a>
-  </footer>
-</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <app-loading [isLoading]="loading"></app-loading>
+
+  <div *ngIf="thread$ | async as thread">
+
+    <ng-container *ngIf="thread.comments.length > 0">
+      <app-thread-summary [thread]="thread" (unread)="setAllCommentsInThreadUnread()"></app-thread-summary>
+      <ng-container *ngFor="let comment of thread.comments">
+        <app-thread-comment [comment]="comment" (remove)="removeCommentFromList($event)"></app-thread-comment>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="thread.comments.length === 0">
+      <a [routerLink]="'/'" class="go-back">&laquo; Go back</a>
+      <p>All comments for this thread are set as read!</p>
+      <p><a (click)="setAllCommentsInThreadUnread(thread.id)">Make all comments unread</a></p>
+    </ng-container>
+
+  </div>
+</div>
