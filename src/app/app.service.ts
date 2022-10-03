@@ -36,7 +36,7 @@ export class AppService {
     if (!threadId) {
       throw new Error('getCommentsFromThread requires a "threadId".')
     }
-    return this.http.get<CommentPage>(`/.netlify/functions/reddit-comments?threadId=${threadId}`);
+    return this.http.get<CommentPage>(`/.netlify/functions/reddit-thread?threadId=${threadId}`);
   }
 
   // getRepliesFromThread(threadId: string): Promise<any> {
