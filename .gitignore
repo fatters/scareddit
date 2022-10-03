@@ -34,7 +34,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-/config.json
+/.snoowrap-config.json
 .netlify
 
 # System Files

@@ -22,8 +22,8 @@ export class CommentsComponent implements OnInit {
     this.loading = true;
     this.threadId = this.route.snapshot.params.id;
 
-    this.appService.getRepliesFromThread(this.threadId).then((comments) => {
-      this.filterComments(comments);
+    this.appService.getCommentsFromThread(this.threadId).subscribe((thread) => {
+      this.filterComments(thread);
       this.loading = false;
       this.seoService.setTitleAndDescription(
         `${this.comments[0].parent} | Scareddit`,
@@ -52,12 +52,12 @@ export class CommentsComponent implements OnInit {
     localStorage.setItem(this.threadId, JSON.stringify(commentsRead));
   }
 
-  private filterComments(data: any): void {
-    data.comments.forEach((comment) => {
+  private filterComments(thread: any): void {
+    thread.comments.forEach((comment) => {
       if (comment.body !== '[removed]' && comment.body !== '[deleted]') {
         const commentsRead = JSON.parse(localStorage.getItem(this.threadId)) || [];
         if (commentsRead.indexOf(comment.id) === -1) {
-          this.comments.push(new RedditComment(comment.id, comment.body_html, comment.score, comment.permalink, data.title));
+          this.comments.push(new RedditComment(comment.id, comment.body_html, comment.score, comment.permalink, thread.title));
         }
       }
     });

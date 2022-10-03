@@ -18,7 +18,25 @@ Happy reading!
 
 ## Development server
 
+To be able to run the serverless function locally, make a `snoowrap-config.json` file in the root of the project. Make sure you are set up to be able to use Reddit's API. It should look like this:
+
+```
+{
+  "USER_AGENT": "{YOUR USER AGENT}",
+  "CLIENT_ID": "{YOUR CLIENT ID}",
+  "CLIENT_SECRET": "{YOUR CLIENT SECRET}",
+  "REFRESH_TOKEN": "{YOUR REFRESH TOKEN}"
+}
+```
+The serverless function will then use your credentials locally rather than the site's environment variables.
+
+### Angular
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### Netlify
+
+Run `netlify dev` (need to install netlify-cli). Navigate to `http://localhost:8888/`. Make sure `ng serve` is not running in another window.
 
 ## Build
 
