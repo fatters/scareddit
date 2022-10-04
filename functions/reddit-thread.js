@@ -1,8 +1,16 @@
 const snoowrapInit = require('snoowrap');
-const localSnoowrapConfig = require('../snoowrap-config.json');
+const fs = require('fs');
+const path = require('path');
+
 let snoowrap;
 
 exports.handler = async (event, context) => {
+
+  let localSnoowrapConfig; // TODO: possibly just want to do all this when running locally
+  fs.readFile(path.resolve(__dirname, '../snoowrap-config.json'), 'UTF-8', (err, data) => {
+    localSnoowrapConfig = data ?? {};
+  });
+
   const {
     CLIENT_ID,
     CLIENT_SECRET,
@@ -50,20 +58,20 @@ exports.handler = async (event, context) => {
       } catch {
         return {
           statusCode: 404,
-          body: JSON.stringify({error: 'Reddit thread not found'})
+          body: JSON.stringify({ error: 'Reddit thread not found' })
         }
       }
 
     } else {
       return {
         statusCode: 400,
-        body: JSON.stringify({error: 'Bad Request'})
+        body: JSON.stringify({ error: 'Bad Request' })
       }
     }
   } catch {
     return {
       statusCode: 500,
-      body: JSON.stringify({error: 'Failed communicating with Snoowrap'})
+      body: JSON.stringify({ error: 'Failed communicating with Snoowrap' })
     }
   }
 }
