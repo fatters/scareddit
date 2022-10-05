@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RedditComment } from '../models/reddit-comment';
 import { RedditThread } from '../models/reddit-thread';
-
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThreadService {
+  private isProduction = environment.production;
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +18,7 @@ export class ThreadService {
       throw new Error('getThreadInformation requires a "threadId".');
     }
 
-    return this.http.get<RedditThread>(`/.netlify/functions/reddit-thread?threadId=${threadId}`);
+    return this.http.get<RedditThread>(`/.netlify/functions/reddit-thread?threadId=${threadId}&production=${this.isProduction}`);
   }
 
   getTruthyAndUnreadComments(comments: RedditComment[], threadId: string): RedditComment[] {

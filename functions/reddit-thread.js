@@ -6,10 +6,20 @@ let snoowrap;
 
 exports.handler = async (event, context) => {
 
-  let localSnoowrapConfig; // TODO: possibly just want to do all this when running locally
-  fs.readFile(path.resolve(__dirname, '../snoowrap-config.json'), 'UTF-8', (err, data) => {
-    localSnoowrapConfig = data ?? {};
-  });
+  const isProduction = event?.queryStringParameters?.production;
+
+  let localSnoowrapConfig = {};
+
+  if (!isProduction) {
+    fs.readFile(path.resolve(__dirname, '../snoowrap-config.json'), 'UTF-8', (error, config) => {
+      if (error) {
+        console.error('error');
+      }
+      if (config) {
+        localSnoowrapConfig = config;
+      }
+    });
+  }
 
   const {
     CLIENT_ID,
