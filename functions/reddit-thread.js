@@ -6,19 +6,21 @@ let snoowrap;
 
 exports.handler = async (event, context) => {
 
-  const isProduction = event?.queryStringParameters?.production;
+  const productionParam = event?.queryStringParameters?.production;
+  
+  const isProduction = (productionParam === 'true');
 
   let localSnoowrapConfig = {};
 
   if (!isProduction) {
-    fs.readFile(path.resolve(__dirname, '../snoowrap-config.json'), 'UTF-8', (error, config) => {
-      if (error) {
-        console.error('error');
+    try {
+      localSnoowrapConfig = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../snoowrap-config.json'), { encoding: 'utf8', flag: 'r' }));
+    } catch {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: `Error reading the local snoowrap-config.json` })
       }
-      if (config) {
-        localSnoowrapConfig = config;
-      }
-    });
+    }
   }
 
   const {
@@ -26,14 +28,14 @@ exports.handler = async (event, context) => {
     CLIENT_SECRET,
     REFRESH_TOKEN,
     USER_AGENT
-  } = process.env;
+  } = isProduction ? process.env : localSnoowrapConfig;
 
-  const {
-    CLIENT_ID: CLIENT_ID_DEV,
-    CLIENT_SECRET: CLIENT_SECRET_DEV,
-    REFRESH_TOKEN: REFRESH_TOKEN_DEV,
-    USER_AGENT: USER_AGENT_DEV
-  } = localSnoowrapConfig;
+  const snoowrapConfig = {
+    userAgent: USER_AGENT,
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    refreshToken: REFRESH_TOKEN
+  }
 
   const threadId = event?.queryStringParameters?.threadId;
 
@@ -42,16 +44,13 @@ exports.handler = async (event, context) => {
     depth: 0
   };
 
-  const snoowrapConfig = {
-    userAgent: USER_AGENT ?? USER_AGENT_DEV,
-    clientId: CLIENT_ID ?? CLIENT_ID_DEV,
-    clientSecret: CLIENT_SECRET ?? CLIENT_SECRET_DEV,
-    refreshToken: REFRESH_TOKEN ?? REFRESH_TOKEN_DEV
-  };
-
   try {
     if (!snoowrap) {
-      snoowrap = new snoowrapInit(snoowrapConfig);
+      try {
+        snoowrap = new snoowrapInit(snoowrapConfig);
+      } catch (error) {
+        console.error(`Error initialising Snoowrap`, error);
+      }
     }
 
     if (snoowrap && threadId) {
