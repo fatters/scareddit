@@ -3,36 +3,35 @@
   color: #333;
   font-family: 'Chelsea Market', Arial, sans-serif;
   line-height: 1;
-  overflow: hidden;
+  height: 68px;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: inherit;
 }
 
 .header__logo {
+  color: inherit;
   font-size: 16px;
-  width: 85px;
-  line-height: 68px;
-  float: left;
-
-  a {
-    color: #333;
-    text-decoration: none;
-
-    &:hover {
-      color: #333;
-    }
+  text-decoration: none;
+  
+  &:hover {
+    color: inherit;
   }
 }
 
 .header__navigation {
   font-size: 14px;
-  float: right;
 
   &__link {
     color: #333;
     font-size: 12px;
     text-decoration: none;
-    line-height: 68px;
     display: block;
-    float: left;
+    padding: 1rem 0;
 
     &:not(:first-of-type) {
       margin-left: 32px;

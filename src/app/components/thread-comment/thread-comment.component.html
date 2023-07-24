@@ -3,6 +3,6 @@
   <footer class="comment__footer">
     <span class="comment__footer__score">Score: {{comment.score}}</span>
     <a class="comment__footer__view-thread comment__button" [href]="'http://reddit.com' + comment.permalink" target="_blank" rel="nofollow noreferrer">Visit Comment</a>
-    <a class="comment__footer__read-it comment__button" (click)="removeCommentFromList()">Read it</a>
+    <button type="button" class="comment__footer__read-it comment__button btn-link" (click)="removeCommentFromList()">Read it</button>
   </footer>
 </div>

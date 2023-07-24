@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HeaderComponent } from './header.component';
-import { getDebugElements, getNativeElement } from '../../app.component.spec';
 import { RouterTestingModule } from '@angular/router/testing';
+import { getDebugElements, getNativeElement } from '../../app.component.spec';
+import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
@@ -25,8 +25,9 @@ describe('HeaderComponent', () => {
 
       // When
       fixture.detectChanges();
+      
       // Then
-      expect(getNativeElement(fixture, '.header__logo > a').innerText).toEqual(someText);
+      expect(getNativeElement(fixture, '.header__logo').innerText).toEqual(someText);
     });
 
     it('has one navigation item', () => {

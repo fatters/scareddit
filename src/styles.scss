@@ -68,7 +68,25 @@ p {
   text-align: center;
 }
 
+.btn-link {
+  background: 0;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: orange;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 svg path,
 svg rect{
   fill: orange;
+}
+
+a:focus,
+button:focus {
+  outline-width: 4px;
+  outline-color: white;
+  outline-offset: 2px;
 }
