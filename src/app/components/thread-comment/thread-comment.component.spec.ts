@@ -1,25 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { dummyComment } from 'src/app/app.component.spec';
 import { ThreadCommentComponent } from './thread-comment.component';
 
 describe('ThreadCommentComponent', () => {
-  let component: ThreadCommentComponent;
+  let testSubject: ThreadCommentComponent;
   let fixture: ComponentFixture<ThreadCommentComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ThreadCommentComponent ]
-    })
-    .compileComponents();
-  });
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ThreadCommentComponent]
+    })
+
     fixture = TestBed.createComponent(ThreadCommentComponent);
-    component = fixture.componentInstance;
+    testSubject = fixture.componentInstance;
+
+    testSubject.comment = dummyComment();
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(testSubject).toBeTruthy();
   });
 });

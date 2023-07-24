@@ -3,11 +3,11 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './components/header/header.component';
 import { By } from '@angular/platform-browser';
-import { RedditComment } from './_model/comment';
 import { DebugElement } from '@angular/core';
-import { RedditThread } from './_model/thread';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
-import { AppService } from './app.service';
+import { RedditThread } from './models/reddit-thread';
+import { RedditComment } from './models/reddit-comment';
+import { HomePageItem } from './models/home-page-item';
 
 describe('AppComponent', () => {
 
@@ -17,9 +17,6 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
         ScrollToTopComponent
-      ],
-      providers: [
-        {provide: AppService, useValue: jasmine.createSpyObj('appService', ['configureSnoowrap'])}
       ],
       imports: [
         RouterTestingModule
@@ -39,22 +36,31 @@ describe('AppComponent', () => {
   }));
 });
 
+export const dummyHomePageItem = (): HomePageItem => {
+  return {
+    id: '1',
+    title: 'title',
+    url: 'url',
+    commentsRead: 0
+  };
+};
+
 export const dummyThread = (): RedditThread => {
-  return new RedditThread(
-    'id',
-    'Title',
-    'Url'
-  );
+  return {
+    id: 'id',
+    title: 'title',
+    comments: []
+  };
 };
 
 export const dummyComment = (): RedditComment => {
-  return new RedditComment(
-    '1',
-    'Body',
-    500,
-    'Link',
-    'Parent'
-  );
+  return {
+    id: '1',
+    body: 'body',
+    body_html: 'body',
+    score: 500,
+    permalink: 'link'
+  };
 };
 
 export const getNativeElement = (fixture: ComponentFixture<any>, cssClass: string): HTMLElement => {

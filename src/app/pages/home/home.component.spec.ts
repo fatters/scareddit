@@ -1,25 +1,37 @@
-import { ThreadsComponent } from './home.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { dummyThread, getDebugElements, getNativeElement } from '../../app.component.spec';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
+import { HomeService } from 'src/app/services/home.service';
+import { MockHomeService } from 'src/app/services/home.service.spec';
+import { dummyHomePageItem, getDebugElements, getNativeElement } from '../../app.component.spec';
+import { HomeComponent } from './home.component';
 
-describe('ThreadsComponent', () => {
-  let fixture: ComponentFixture<ThreadsComponent>;
-  let testSubject: ThreadsComponent;
+describe('HomeComponent', () => {
+  let fixture: ComponentFixture<HomeComponent>;
+  let testSubject: HomeComponent;
+  let service: HomeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ThreadsComponent],
-      imports: [RouterTestingModule]
+      declarations: [HomeComponent, LoadingComponent],
+      imports: [RouterTestingModule],
+      providers: [
+        { provide: HomeService, useClass: MockHomeService }
+      ],
     });
 
-    fixture = TestBed.createComponent(ThreadsComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     testSubject = fixture.componentInstance;
 
-    testSubject.threads = [
-      dummyThread(),
-      dummyThread()
-    ];
+    service = TestBed.inject(HomeService);
+
+    spyOn(service, 'getHomePageItems').and.callFake(() => {
+      return of([
+        dummyHomePageItem(),
+        dummyHomePageItem()
+      ])
+    })
   });
 
   describe('render', () => {
@@ -29,16 +41,16 @@ describe('ThreadsComponent', () => {
       fixture.detectChanges();
 
       // Then
-      expect(getDebugElements(fixture, '.thread').length).toEqual(2);
+      expect(getDebugElements(fixture, '.home-page-item').length).toEqual(2);
     });
 
-    it('renders the title of the thread', () => {
+    it('renders the title of the thread', fakeAsync(() => {
       // When
       fixture.detectChanges();
 
       // Then
-      expect(getNativeElement(fixture, '.thread__body').innerText).toEqual('Title');
-    });
+      expect(getNativeElement(fixture, '.home-page-item__body').innerText).toEqual('title');
+    }));
   });
 
   describe('#getCommentsRead()', () => {
@@ -48,7 +60,7 @@ describe('ThreadsComponent', () => {
       const result = testSubject.getCommentsRead('any id');
 
       // Then
-      expect(result).toEqual('0 Comments Read');
+      expect(result).toEqual(0);
     });
 
     it('returns the number of items saved to local storage if more than 0', () => {
@@ -59,7 +71,7 @@ describe('ThreadsComponent', () => {
       const result = testSubject.getCommentsRead('any id');
 
       // Then
-      expect(result).toEqual('2 Comments Read');
+      expect(result).toEqual(2);
     });
   });
 });

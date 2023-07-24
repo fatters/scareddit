@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  private getCommentsRead(threadId: string): number {
+  getCommentsRead(threadId: string): number {
     const commentsRead = JSON.parse(localStorage.getItem(threadId)) || [];
     return commentsRead.length;
   }

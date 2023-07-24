@@ -45,12 +45,15 @@ describe('LoadingComponent', () => {
         expect(getNativeElement(fixture, '.loading')).toBeTruthy();
       });
 
-      it('renders the words "Loading Comments...', () => {
+      it('renders the words "Loading" followed by what is set in "text"', () => {
+        const someText = 'moo';
+        testSubject.text = someText;
+
         // When
         fixture.detectChanges();
 
         // Then
-        expect(getNativeElement(fixture, '.loading__text').innerHTML).toEqual('Loading Comments...');
+        expect(getNativeElement(fixture, '.loading__text').innerHTML).toEqual(`Loading ${someText}...`);
       });
     });
   });

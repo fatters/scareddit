@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
+import { ThreadService } from 'src/app/services/thread.service';
+import { MockThreadService } from 'src/app/services/thread.service.spec';
 import { ThreadComponent } from './thread.component';
 
 describe('ThreadComponent', () => {
@@ -8,7 +11,11 @@ describe('ThreadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThreadComponent ]
+      declarations: [ThreadComponent, LoadingComponent],
+      imports: [RouterTestingModule],
+      providers: [
+        {provide: ThreadService, useClass: MockThreadService}
+      ]
     })
     .compileComponents();
   });
