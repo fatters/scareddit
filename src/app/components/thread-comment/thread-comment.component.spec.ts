@@ -9,7 +9,7 @@ describe('ThreadCommentComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ThreadCommentComponent]
-    })
+    });
 
     fixture = TestBed.createComponent(ThreadCommentComponent);
     testSubject = fixture.componentInstance;

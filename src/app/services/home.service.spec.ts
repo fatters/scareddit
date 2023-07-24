@@ -1,9 +1,9 @@
-import { HttpClient } from "@angular/common/http";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { TestBed } from "@angular/core/testing";
-import { Observable, of } from "rxjs";
-import { HomePageItem } from "../models/home-page-item";
-import { HomeService } from "./home.service";
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { Observable, of } from 'rxjs';
+import { HomePageItem } from '../models/home-page-item';
+import { HomeService } from './home.service';
 
 export class MockHomeService {
 
@@ -19,7 +19,7 @@ describe('HomeService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [HomeService],
-    })
+    });
 
     testSubject = TestBed.inject(HomeService);
   });
@@ -35,7 +35,7 @@ describe('HomeService', () => {
       testSubject.getHomePageItems();
 
       // Then
-      expect(http.get).toHaveBeenCalledWith('./assets/home-page-items.json')
+      expect(http.get).toHaveBeenCalledWith('./assets/home-page-items.json');
     });
   });
 });

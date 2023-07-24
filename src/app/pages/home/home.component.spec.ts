@@ -30,8 +30,8 @@ describe('HomeComponent', () => {
       return of([
         dummyHomePageItem(),
         dummyHomePageItem()
-      ])
-    })
+      ]);
+    });
   });
 
   describe('render', () => {
