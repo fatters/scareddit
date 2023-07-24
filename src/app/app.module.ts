@@ -28,7 +28,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     LoadingModule,
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(routes, {}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   bootstrap: [
