@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { dummyComment } from 'src/app/app.component.spec';
+import { dummyComment, getNativeElement } from 'src/app/app.component.spec';
 import { ThreadCommentComponent } from './thread-comment.component';
 
 describe('ThreadCommentComponent', () => {
@@ -19,7 +19,35 @@ describe('ThreadCommentComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(testSubject).toBeTruthy();
+  describe('render', () => {
+
+    it('displays the comments "body_comment"', () => {
+      // Then
+      expect(getNativeElement(fixture, '.comment__body').innerHTML).toEqual('body');
+    });
+
+    it('displays the comments score', () => {
+      // Then
+      expect(getNativeElement(fixture, '.comment__footer__score').innerHTML).toEqual('Score: 500');
+    });
+
+    it('provides a link to the comment on reddit', () => {
+      // Then
+      expect((getNativeElement(fixture, '.comment__footer__view-thread') as HTMLAnchorElement).href).toEqual('https://reddit.com/link');
+    });
+  });
+
+  describe('#removeCommentFromList()', () => {
+
+    it('emits remove with the comment id', () => {
+      // Given
+      spyOn(testSubject.remove, 'emit').and.callFake(() => null);
+
+      // When
+      testSubject.removeCommentFromList();
+
+      // Then
+      expect(testSubject.remove.emit).toHaveBeenCalled();
+    });
   });
 });

@@ -59,7 +59,7 @@ export const dummyComment = (): RedditComment => {
     body: 'body',
     body_html: 'body',
     score: 500,
-    permalink: 'link'
+    permalink: '/link'
   };
 };
 
