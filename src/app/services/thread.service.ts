@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { RedditComment } from '../models/reddit-comment';
 import { RedditThread } from '../models/reddit-thread';
 import { environment } from './../../environments/environment';
@@ -10,6 +10,9 @@ import { environment } from './../../environments/environment';
 })
 export class ThreadService {
   private isProduction = environment.production;
+  private badComments = ['[removed]', '[deleted]'];
+  private localThreads = new Map<string, RedditThread>();
+  private localThreadsMaxSize = 10;
 
   constructor(private http: HttpClient) {}
 
@@ -18,20 +21,19 @@ export class ThreadService {
       throw new Error('getThreadInformation requires a "threadId".');
     }
 
-    return this.http.get<RedditThread>(`/.netlify/functions/reddit-thread?threadId=${threadId}&production=${this.isProduction}`);
+    if (this.localThreads.get(threadId)) {
+      return of(this.localThreads.get(threadId));
+    } else {
+      return this.http.get<RedditThread>(`/.netlify/functions/reddit-thread?threadId=${threadId}&production=${this.isProduction}`)
+        .pipe(tap((thread) => this.setLocalThreads(threadId, thread)));  
+    }
   }
 
   getTruthyAndUnreadComments(comments: RedditComment[], threadId: string): RedditComment[] {
-    const response = [];
-    comments.forEach((comment) => {
-      if (comment.body !== '[removed]' && comment.body !== '[deleted]') {
-        const commentsRead = JSON.parse(localStorage.getItem(threadId)) || [];
-        if (commentsRead.indexOf(comment.id) === -1) {
-          response.push(comment);
-        }
-      }
-    });
-    return response;
+    const commentsRead = JSON.parse(localStorage.getItem(threadId)) || [];
+    return comments
+      .filter((comment) => this.badComments.indexOf(comment.body) === -1)
+      .filter((comment) => commentsRead.indexOf(comment.id) === -1);
   }
 
   setCommentAsRead(commentId: string, threadId: string): void {
@@ -43,5 +45,14 @@ export class ThreadService {
   setAllCommentsInThreadUnread(threadId: string): void {
     localStorage.removeItem(threadId);
     location.reload();
+  }
+
+  private setLocalThreads(threadId: string, thread: RedditThread): void {
+    if (this.localThreads.size === this.localThreadsMaxSize) {
+      const [keyToRemove] = this.localThreads.keys();
+      this.localThreads.delete(keyToRemove);
+    }
+
+    this.localThreads.set(threadId, thread);
   }
 }

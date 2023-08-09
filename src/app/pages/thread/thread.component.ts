@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { SeoService } from 'src/app/services/seo.service';
@@ -17,7 +17,8 @@ export class ThreadComponent implements OnInit {
 
   constructor(private threadService: ThreadService,
               private route: ActivatedRoute,
-              private seoService: SeoService) {
+              private seoService: SeoService,
+              private changeDetector: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -48,6 +49,7 @@ export class ThreadComponent implements OnInit {
           `${thread.title} | Scareddit`,
           'A collection of spooky/paranormal threads from Reddit'
         );
+        this.changeDetector.detectChanges();
       })
     );
   }
