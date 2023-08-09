@@ -60,10 +60,14 @@ p {
 
 .btn {
   background: orange;
-  color: #333;
-  display: inline-block;
-  padding: 8px;
+  border: 0;
   border-radius: 4px;
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 8px;
   text-decoration: none;
   text-align: center;
 }
