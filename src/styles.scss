@@ -90,7 +90,6 @@ svg rect{
 
 a:focus,
 button:focus {
-  outline-width: 4px;
-  outline-color: white;
+  outline: 4px solid white;
   outline-offset: 2px;
 }
