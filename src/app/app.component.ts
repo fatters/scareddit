@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { ServiceWorkerService } from './services/service-worker.service';
 
 const SCROLL_TRIGGER_POINT = 1000;
 const SCROLL_CLASS = 'has-scroll-component';
@@ -8,10 +9,15 @@ const SCROLL_CLASS = 'has-scroll-component';
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   showScrollToTopComponent: boolean;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2,
+              private serviceWorkerService: ServiceWorkerService) {}
+
+  ngOnInit(): void {
+    this.serviceWorkerService.start();
+  }
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
