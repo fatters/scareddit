@@ -1,13 +1,15 @@
-import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HeaderComponent } from './components/header/header.component';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
-import { RedditThread } from './models/reddit-thread';
-import { RedditComment } from './models/reddit-comment';
 import { HomePageItem } from './models/home-page-item';
+import { RedditComment } from './models/reddit-comment';
+import { RedditThread } from './models/reddit-thread';
+import { ServiceWorkerService } from './services/service-worker.service';
+import { MockServiceWorkerService } from './services/service-worker.service.spec';
 
 describe('AppComponent', () => {
 
@@ -20,6 +22,9 @@ describe('AppComponent', () => {
       ],
       imports: [
         RouterTestingModule
+      ],
+      providers: [
+        { provide: ServiceWorkerService, useClass: MockServiceWorkerService }
       ]
     });
   }));

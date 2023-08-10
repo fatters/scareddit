@@ -44,12 +44,13 @@ describe('ThreadSummaryComponent', () => {
     it('emits unread with the thread id', () => {
       // Given
       spyOn(testSubject.unread, 'emit').and.callFake(() => null);
+      const someThreadId = testSubject.thread.id;
 
       // When
       testSubject.setAllCommentsInThreadUnread();
 
       // Then
-      expect(testSubject.unread.emit).toHaveBeenCalled();
+      expect(testSubject.unread.emit).toHaveBeenCalledWith(someThreadId);
     });
   });
 });

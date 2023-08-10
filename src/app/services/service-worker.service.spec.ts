@@ -1,5 +1,5 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { ServiceWorkerService } from './service-worker.service';
 
 export class MockServiceWorkerService {
@@ -17,7 +17,7 @@ describe('ServiceWorkerService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [ServiceWorkerModule.register('', {enabled: false})]
     });
     service = TestBed.inject(ServiceWorkerService);
   });

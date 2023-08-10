@@ -42,12 +42,13 @@ describe('ThreadCommentComponent', () => {
     it('emits remove with the comment id', () => {
       // Given
       spyOn(testSubject.remove, 'emit').and.callFake(() => null);
+      const someCommentId = testSubject.comment.id;
 
       // When
       testSubject.removeCommentFromList();
 
       // Then
-      expect(testSubject.remove.emit).toHaveBeenCalled();
+      expect(testSubject.remove.emit).toHaveBeenCalledWith(someCommentId);
     });
   });
 });
