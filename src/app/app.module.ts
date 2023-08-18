@@ -7,6 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { LoadingModule } from 'src/app/components/loading/loading.module';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
     HeaderComponent,
     ScrollToTopComponent
   ],

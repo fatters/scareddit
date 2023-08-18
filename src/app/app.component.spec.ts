@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 import { HomePageItem } from './models/home-page-item';
@@ -17,6 +18,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        FooterComponent,
         HeaderComponent,
         ScrollToTopComponent
       ],
