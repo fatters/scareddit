@@ -1,8 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, Renderer2 } from '@angular/core';
+import { fromEvent, tap, throttleTime } from 'rxjs';
 import { ServiceWorkerService } from './services/service-worker.service';
-
-const SCROLL_TRIGGER_POINT = 1000;
-const SCROLL_CLASS = 'has-scroll-component';
 
 @Component({
   selector: 'scareddit-root',
@@ -11,22 +9,32 @@ const SCROLL_CLASS = 'has-scroll-component';
 })
 export class AppComponent implements OnInit {
   showScrollToTopComponent: boolean;
+  private readonly scrollTriggerPoint = 1000;
+  private readonly scrollClass = 'has-scroll-component';
+  private readonly scrollThrottleMS = 100;
 
   constructor(private renderer: Renderer2,
-              private serviceWorkerService: ServiceWorkerService) {}
+              private serviceWorkerService: ServiceWorkerService,
+              private changeDetector: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.serviceWorkerService.start();
+
+    fromEvent(window, 'scroll').pipe(
+      throttleTime(this.scrollThrottleMS),
+      tap(() => this.handleScrollToTopComponent())
+    ).subscribe();
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    if (window.scrollY > SCROLL_TRIGGER_POINT) {
+  handleScrollToTopComponent(): void {
+    if (window.scrollY > this.scrollTriggerPoint) {
       this.showScrollToTopComponent = true;
-      this.renderer.addClass(document.body, SCROLL_CLASS);
+      this.renderer.addClass(document.body, this.scrollClass);
     } else {
       this.showScrollToTopComponent = false;
-      this.renderer.removeClass(document.body, SCROLL_CLASS);
+      this.renderer.removeClass(document.body, this.scrollClass);
     }
+
+    this.changeDetector.markForCheck();
   }
 }
