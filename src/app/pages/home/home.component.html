@@ -3,9 +3,7 @@
 
   <ng-container *ngFor="let item of (homePageItems$ | async); let i = index">
     <div class="home-page-item">
-      <a [routerLink]="'/thread/' + item.id">
-        <div class="home-page-item__body" [innerHTML]="item.title"></div>
-      </a>
+      <a [routerLink]="'/thread/' + item.id">{{item.title}}</a>
       <span>Comments Read: {{ item.commentsRead }}</span>
     </div>
   </ng-container>

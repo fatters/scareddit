@@ -49,7 +49,7 @@ describe('HomeComponent', () => {
       fixture.detectChanges();
 
       // Then
-      expect(getNativeElement(fixture, '.home-page-item__body').innerText).toEqual('title');
+      expect(getNativeElement(fixture, '.home-page-item a').innerText).toEqual('title');
     }));
   });
 
