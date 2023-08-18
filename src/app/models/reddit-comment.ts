@@ -5,3 +5,11 @@ export interface RedditComment {
   score: number;
   permalink: string;
 }
+
+export const MockRedditComment: RedditComment = {
+  id: '1',
+  body: 'body',
+  body_html: 'body',
+  score: 500,
+  permalink: '/link'
+};

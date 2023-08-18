@@ -5,3 +5,9 @@ export interface RedditThread {
   title: string;
   comments: RedditComment[];
 }
+
+export const MockRedditThread: RedditThread = {
+  id: 'id',
+  title: 'title',
+  comments: []
+};

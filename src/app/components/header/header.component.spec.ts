@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { getDebugElements, getNativeElement } from '../../app.component.spec';
+import { getDebugElements, getNativeElement } from '../../utils/test-utils';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {

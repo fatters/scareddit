@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { getNativeElement } from '../../app.component.spec';
+import { getNativeElement } from '../../utils/test-utils';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {

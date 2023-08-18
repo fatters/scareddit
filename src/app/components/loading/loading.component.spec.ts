@@ -1,6 +1,6 @@
-import { LoadingComponent } from './loading.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { getNativeElement } from '../../app.component.spec';
+import { getNativeElement } from '../../utils/test-utils';
+import { LoadingComponent } from './loading.component';
 
 describe('LoadingComponent', () => {
   let fixture: ComponentFixture<LoadingComponent>;

@@ -4,3 +4,10 @@ export interface HomePageItem {
   url: string;
   commentsRead?: number;
 }
+
+export const MockHomePageItem: HomePageItem = {
+  id: '1',
+  title: 'title',
+  url: 'url',
+  commentsRead: 0
+};

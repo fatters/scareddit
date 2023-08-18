@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { dummyComment, getNativeElement } from 'src/app/app.component.spec';
+import { MockRedditComment } from 'src/app/models/reddit-comment';
+import { getNativeElement } from '../../utils/test-utils';
 import { ThreadCommentComponent } from './thread-comment.component';
 
 describe('ThreadCommentComponent', () => {
@@ -14,7 +15,7 @@ describe('ThreadCommentComponent', () => {
     fixture = TestBed.createComponent(ThreadCommentComponent);
     testSubject = fixture.componentInstance;
 
-    testSubject.comment = dummyComment();
+    testSubject.comment = MockRedditComment;
 
     fixture.detectChanges();
   });

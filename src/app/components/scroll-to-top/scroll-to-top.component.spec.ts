@@ -1,7 +1,7 @@
-import { ScrollToTopComponent } from './scroll-to-top.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { getNativeElement } from '../../app.component.spec';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { getNativeElement } from '../../utils/test-utils';
+import { ScrollToTopComponent } from './scroll-to-top.component';
 
 describe('ScrollToTopComponent', () => {
   let fixture: ComponentFixture<ScrollToTopComponent>;

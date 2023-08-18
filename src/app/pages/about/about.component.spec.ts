@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AboutComponent } from './about.component';
-import { getNativeElement } from '../../app.component.spec';
 import { RouterTestingModule } from '@angular/router/testing';
+import { getNativeElement } from '../../utils/test-utils';
+import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {
   let fixture: ComponentFixture<AboutComponent>;

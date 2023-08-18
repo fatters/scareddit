@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { dummyThread, getNativeElement } from 'src/app/app.component.spec';
+import { MockRedditThread } from 'src/app/models/reddit-thread';
+import { getNativeElement } from '../../utils/test-utils';
 import { ThreadSummaryComponent } from './thread-summary.component';
 
 describe('ThreadSummaryComponent', () => {
@@ -16,7 +17,7 @@ describe('ThreadSummaryComponent', () => {
     fixture = TestBed.createComponent(ThreadSummaryComponent);
     testSubject = fixture.componentInstance;
 
-    testSubject.thread = dummyThread();
+    testSubject.thread = MockRedditThread;
 
     fixture.detectChanges();
   });

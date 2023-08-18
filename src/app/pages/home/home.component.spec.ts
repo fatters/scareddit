@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { LoadingComponent } from 'src/app/components/loading/loading.component';
+import { MockHomePageItem } from 'src/app/models/home-page-item';
 import { HomeService } from 'src/app/services/home.service';
 import { MockHomeService } from 'src/app/services/home.service.spec';
-import { dummyHomePageItem, getDebugElements, getNativeElement } from '../../app.component.spec';
+import { getDebugElements, getNativeElement } from '../../utils/test-utils';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
@@ -28,8 +29,8 @@ describe('HomeComponent', () => {
 
     spyOn(service, 'getHomePageItems').and.callFake(() => {
       return of([
-        dummyHomePageItem(),
-        dummyHomePageItem()
+        MockHomePageItem,
+        MockHomePageItem
       ]);
     });
   });
