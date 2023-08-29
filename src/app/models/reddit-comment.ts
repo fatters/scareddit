@@ -1,4 +1,4 @@
-export interface RedditComment {
+export type RedditComment = {
   id: string;
   body: string;
   body_html: unknown;

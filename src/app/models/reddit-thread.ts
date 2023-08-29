@@ -1,6 +1,6 @@
-import { RedditComment } from './reddit-comment';
+import type { RedditComment } from './reddit-comment';
 
-export interface RedditThread {
+export type RedditThread = {
   id: string;
   title: string;
   comments: RedditComment[];

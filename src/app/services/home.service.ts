@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HomePageItem } from '../models/home-page-item';
+import type { HomePageItem } from '../models/home-page-item';
 
 @Injectable({
   providedIn: 'root'

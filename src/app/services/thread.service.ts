@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
-import { RedditComment } from '../models/reddit-comment';
-import { RedditThread } from '../models/reddit-thread';
+import type { RedditComment } from '../models/reddit-comment';
+import type { RedditThread } from '../models/reddit-thread';
 import { environment } from './../../environments/environment';
 
 @Injectable({

@@ -1,8 +1,8 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
-import { RedditComment } from '../models/reddit-comment';
-import { RedditThread } from '../models/reddit-thread';
+import type { RedditComment } from '../models/reddit-comment';
+import type { RedditThread } from '../models/reddit-thread';
 import { ThreadService } from './thread.service';
 
 export class MockThreadService {

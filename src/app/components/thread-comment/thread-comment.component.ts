@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { RedditComment } from 'src/app/models/reddit-comment';
+import type { RedditComment } from 'src/app/models/reddit-comment';
 
 @Component({
   selector: 'scareddit-thread-comment',

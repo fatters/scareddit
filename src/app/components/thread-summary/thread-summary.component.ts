@@ -1,6 +1,6 @@
 
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { RedditThread } from 'src/app/models/reddit-thread';
+import type { RedditThread } from 'src/app/models/reddit-thread';
 
 @Component({
   selector: 'scareddit-thread-summary',

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { SeoService } from 'src/app/services/seo.service';
-import { RedditThread } from './../../models/reddit-thread';
+import type { RedditThread } from './../../models/reddit-thread';
 import { ThreadService } from './../../services/thread.service';
 
 @Component({

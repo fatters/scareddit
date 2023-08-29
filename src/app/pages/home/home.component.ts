@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
-import { HomePageItem } from 'src/app/models/home-page-item';
+import type { HomePageItem } from 'src/app/models/home-page-item';
 import { HomeService } from 'src/app/services/home.service';
 import { SeoService } from 'src/app/services/seo.service';
 

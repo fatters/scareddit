@@ -1,4 +1,4 @@
-export interface HomePageItem {
+export type HomePageItem = {
   id: string;
   title: string;
   url: string;
