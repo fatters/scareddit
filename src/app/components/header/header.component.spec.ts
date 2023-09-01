@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { getDebugElements, getNativeElement } from '../../utils/test-utils';
+import { getNativeElement, getNativeElements } from '../../utils/test-utils';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -38,7 +38,7 @@ describe('HeaderComponent', () => {
       fixture.detectChanges();
 
       // Then
-      expect(getDebugElements(fixture, '.header__navigation__link').length).toEqual(expectedNavLinkCount);
+      expect(getNativeElements(fixture, '.header__navigation__link').length).toEqual(expectedNavLinkCount);
     });
 
     it('the first links text is "About"', () => {
@@ -49,7 +49,7 @@ describe('HeaderComponent', () => {
       fixture.detectChanges();
 
       // Then
-      expect(getDebugElements(fixture, '.header__navigation__link')[0].nativeElement.innerText).toEqual(expectedLinkText);
+      expect(getNativeElements(fixture, '.header__navigation__link')[0].innerText).toEqual(expectedLinkText);
     });
   });
 });

@@ -5,7 +5,7 @@ import { LoadingComponent } from 'src/app/components/loading/loading.component';
 import { MockHomePageItem } from 'src/app/models/home-page-item';
 import { HomeService } from 'src/app/services/home.service';
 import { MockHomeService } from 'src/app/services/home.service.spec';
-import { getDebugElements, getNativeElement } from '../../utils/test-utils';
+import { getNativeElement, getNativeElements } from '../../utils/test-utils';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
@@ -42,7 +42,7 @@ describe('HomeComponent', () => {
       fixture.detectChanges();
 
       // Then
-      expect(getDebugElements(fixture, '.home-page-item').length).toEqual(2);
+      expect(getNativeElements(fixture, '.home-page-item').length).toEqual(2);
     });
 
     it('renders the title of the thread', fakeAsync(() => {
