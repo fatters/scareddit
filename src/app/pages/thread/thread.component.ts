@@ -47,7 +47,7 @@ export class ThreadComponent implements OnInit {
         this.loading = false;
         this.seoService.setTitleAndDescription(
           `${thread.title} | Scareddit`,
-          'A collection of spooky/paranormal threads from Reddit'
+          `A Scareddit thread titled: ${thread.title}`
         );
         this.changeDetector.detectChanges();
       })
