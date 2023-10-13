@@ -4,7 +4,11 @@
 
 [[headers]]
   for = "/"
-  for = "/*"
-  for = "/**/*"
   [headers.values]
     X-Clacks-Overhead = "GNU Terry Pratchett"
+  for = "/*"
+  [headers.values]
+    X-Clacks-Overhead = "GNU Terry Pratchett" 
+  for = "/**/*"
+  [headers.values]
+    X-Clacks-Overhead = "GNU Terry Pratchett"   
