@@ -24,7 +24,7 @@ export class ThreadService {
     if (this.localThreads.get(threadId)) {
       return of(this.localThreads.get(threadId));
     } else {
-      return this.http.get<RedditThread>(`/.netlify/functions/reddit-thread?threadId=${threadId}&production=${this.isProduction}`)
+      return this.http.get<RedditThread>(`/functions/reddit-thread?threadId=${threadId}&production=${this.isProduction}`)
         .pipe(tap((thread) => this.setLocalThreads(threadId, thread)));  
     }
   }
