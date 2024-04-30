@@ -1,4 +1,4 @@
-import * as snoowrapInit from 'snoowrap';
+const snoowrapInit = require('node:snoowrap');
 const fs = require('node:fs');
 const path = require('node:path');
 
