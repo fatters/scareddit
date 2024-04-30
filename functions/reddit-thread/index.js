@@ -1,6 +1,6 @@
-const snoowrapInit = require('snoowrap');
-const fs = require('fs');
-const path = require('path');
+const snoowrapInit = require('node:snoowrap');
+const fs = require('node:fs');
+const path = require('node:path');
 
 let snoowrap;
 
