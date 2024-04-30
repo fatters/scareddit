@@ -4,9 +4,8 @@ const path = require('path');
 
 let snoowrap;
 
-exports.handler = async (event, context) => {
-
-  const productionParam = event?.queryStringParameters?.production;
+export async function onRequest(request) {
+  const productionParam = request?.queryStringParameters?.production;
   
   const isProduction = (productionParam === 'true');
 
@@ -37,7 +36,7 @@ exports.handler = async (event, context) => {
     refreshToken: REFRESH_TOKEN
   }
 
-  const threadId = event?.queryStringParameters?.threadId;
+  const threadId = request?.queryStringParameters?.threadId;
 
   const threadConfig = { // Not sure if we'll ever want to change these so static obj for now
     limit: Infinity,
@@ -60,27 +59,27 @@ exports.handler = async (event, context) => {
         const title = thread.title ?? 'Title not found'
         const comments = thread.comments ?? [];
 
-        return {
+        return new Response({
           statusCode: 200,
           body: JSON.stringify({ id, title, comments })
-        }
+        });
       } catch {
-        return {
+        return new Response({
           statusCode: 404,
           body: JSON.stringify({ error: 'Reddit thread not found' })
-        }
+        });
       }
 
     } else {
-      return {
+      return new Response({
         statusCode: 400,
         body: JSON.stringify({ error: 'Bad Request' })
-      }
+      });
     }
   } catch {
-    return {
+    return new Response({
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed communicating with Snoowrap' })
-    }
+    })
   }
 }
