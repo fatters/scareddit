@@ -1,0 +1,29 @@
+diff --git a/node_modules/snoowrap/dist/objects/Subreddit.js b/node_modules/snoowrap/dist/objects/Subreddit.js
+index 47ccaba..267cb37 100644
+--- a/node_modules/snoowrap/dist/objects/Subreddit.js
++++ b/node_modules/snoowrap/dist/objects/Subreddit.js
+@@ -9,9 +9,9 @@ var _lodash = require("lodash");
+ 
+ var _Promise = _interopRequireDefault(require("../Promise.js"));
+ 
+-var _stream = require("stream");
++var _stream = require("node:stream");
+ 
+-var _fs = require("fs");
++var _fs = require("node:fs");
+ 
+ var _helpers = require("../helpers.js");
+ 
+diff --git a/node_modules/snoowrap/dist/xhr.js b/node_modules/snoowrap/dist/xhr.js
+index e24b159..1edb2e7 100644
+--- a/node_modules/snoowrap/dist/xhr.js
++++ b/node_modules/snoowrap/dist/xhr.js
+@@ -4,7 +4,7 @@ var _Promise = _interopRequireDefault(require("./Promise.js"));
+ 
+ var _url = _interopRequireDefault(require("url"));
+ 
+-var _querystring = require("querystring");
++var _querystring = require("node:querystring");
+ 
+ var _errors = require("./errors.js");
+ 

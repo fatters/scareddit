@@ -10,7 +10,8 @@
     "test": "ng test",
     "test:ci": "ng test --watch false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "patch-package"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/router": "^16.1.6",
     "@angular/service-worker": "^16.1.6",
     "netlify-lambda": "^2.0.15",
+    "patch-package": "^8.0.0",
     "rxjs": "^7.5.5",
     "snoowrap": "^1.23.0",
     "tslib": "^2.3.1",
