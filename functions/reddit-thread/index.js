@@ -1,4 +1,4 @@
-const snoowrapInit = require('node:snoowrap');
+const snoowrapInit = require('snoowrap');
 const fs = require('node:fs');
 const path = require('node:path');
 
