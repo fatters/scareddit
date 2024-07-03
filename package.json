@@ -46,6 +46,7 @@
     "@types/node": "^20.4.4",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
+    "devvit": "^0.10.22",
     "eslint": "^8.39.0",
     "jasmine-core": "^5.1.0",
     "karma": "~6.4.2",

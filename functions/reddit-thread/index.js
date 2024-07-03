@@ -1,19 +1,25 @@
-const snoowrapInit = require('snoowrap');
 const fs = require('node:fs');
 const path = require('node:path');
 
 let snoowrap;
 
-export async function onRequest(request) {
+Devvit.configure({
+  redditAPI: true,
+  // other plugins
+});
+
+export async function onRequest(request, context) {
+  const { reddit } = context;
+  console.log('what am i actually even doing anymore', reddit);
+
   const productionParam = request?.queryStringParameters?.production;
   
   const isProduction = (productionParam === 'true');
 
-  let localSnoowrapConfig = {};
 
   if (!isProduction) {
     try {
-      localSnoowrapConfig = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../snoowrap-config.json'), { encoding: 'utf8', flag: 'r' }));
+      // localSnoowrapConfig = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../snoowrap-config.json'), { encoding: 'utf8', flag: 'r' }));
     } catch {
       return {
         statusCode: 500,
@@ -22,19 +28,19 @@ export async function onRequest(request) {
     }
   }
 
-  const {
-    CLIENT_ID,
-    CLIENT_SECRET,
-    REFRESH_TOKEN,
-    USER_AGENT
-  } = isProduction ? process.env : localSnoowrapConfig;
+  // const {
+  //   CLIENT_ID,
+  //   CLIENT_SECRET,
+  //   REFRESH_TOKEN,
+  //   USER_AGENT
+  // } = isProduction ? process.env : localSnoowrapConfig;
 
-  const snoowrapConfig = {
-    userAgent: USER_AGENT,
-    clientId: CLIENT_ID,
-    clientSecret: CLIENT_SECRET,
-    refreshToken: REFRESH_TOKEN
-  }
+  // const snoowrapConfig = {
+  //   userAgent: USER_AGENT,
+  //   clientId: CLIENT_ID,
+  //   clientSecret: CLIENT_SECRET,
+  //   refreshToken: REFRESH_TOKEN
+  // }
 
   const threadId = request?.queryStringParameters?.threadId;
 
@@ -46,7 +52,7 @@ export async function onRequest(request) {
   try {
     if (!snoowrap) {
       try {
-        snoowrap = new snoowrapInit(snoowrapConfig);
+        // snoowrap = new snoowrapInit(snoowrapConfig);
       } catch (error) {
         console.error(`Error initialising Snoowrap`, error);
       }
