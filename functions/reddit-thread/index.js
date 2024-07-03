@@ -1,6 +1,8 @@
 // const fs = require('node:fs');
 // const path = require('node:path');
 
+import { Devvit } from 'devvit';
+
 let snoowrap;
 
 Devvit.configure({
